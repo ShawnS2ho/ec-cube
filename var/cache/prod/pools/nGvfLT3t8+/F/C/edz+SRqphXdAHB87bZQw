@@ -1,0 +1,34 @@
+<?php //Plugin%255CCoupon4%255CController%255CAdmin%255CCouponController%2523edit
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        clone $p['Symfony\\Component\\Routing\\Annotation\\Route'],
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/%eccube_admin_route%/plugin/coupon/new',
+                '/%eccube_admin_route%/plugin/coupon/{id}/edit',
+            ],
+            'name' => [
+                'plugin_coupon_new',
+                'plugin_coupon_edit',
+            ],
+            'requirements' => [
+                [
+                    'id' => '\\d+',
+                ],
+                [
+                    'id' => '\\d+',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];
