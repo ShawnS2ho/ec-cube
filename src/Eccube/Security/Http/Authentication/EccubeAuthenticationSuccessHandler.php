@@ -24,7 +24,7 @@ class EccubeAuthenticationSuccessHandler extends DefaultAuthenticationSuccessHan
     /**
      * {@inheritdoc}
      */
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token)
+    public function onAuthenticationSuccess(\Symfony\Component\HttpFoundation\Request $request, TokenInterface $token)
     {
         try {
             $response = parent::onAuthenticationSuccess($request, $token);
@@ -35,7 +35,10 @@ class EccubeAuthenticationSuccessHandler extends DefaultAuthenticationSuccessHan
         if (preg_match('/^https?:\\\\/i', $response->getTargetUrl())) {
             $response->setTargetUrl($request->getUriForPath('/'));
         }
-
+        if (extension_loaded('newrelic')) { // Ensure PHP agent is available
+            // Record custom data about this web transaction
+            newrelic_add_custom_parameter ('user_email', $token->getUserIdentifier());
+        }
         return $response;
     }
 }

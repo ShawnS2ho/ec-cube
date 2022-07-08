@@ -161,6 +161,7 @@ class CartService
      */
     public function getPersistedCarts()
     {
+    
         return $this->cartRepository->findBy(['Customer' => $this->getUser()]);
     }
 
@@ -507,7 +508,10 @@ class CartService
             // e.g. anonymous authentication
             return;
         }
-
+        if (extension_loaded('newrelic')) { // Ensure PHP agent is available
+            // Record custom data about this web transaction
+            newrelic_add_custom_parameter ('user_email', $token->getUserIdentifier());
+        }
         return $user;
     }
 
