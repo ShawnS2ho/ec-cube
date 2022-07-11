@@ -24,7 +24,7 @@ class EccubeAuthenticationSuccessHandler extends DefaultAuthenticationSuccessHan
     /**
      * {@inheritdoc}
      */
-    public function onAuthenticationSuccess(\Symfony\Component\HttpFoundation\Request $request, TokenInterface $token)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         try {
             $response = parent::onAuthenticationSuccess($request, $token);
