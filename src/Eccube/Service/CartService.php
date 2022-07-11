@@ -510,7 +510,7 @@ class CartService
         }
         if (extension_loaded('newrelic')) { // Ensure PHP agent is available
             // Record custom data about this web transaction
-            newrelic_add_custom_parameter ('user_email', $token->getUserIdentifier());
+            newrelic_add_custom_parameter ('user_email', $token->getUsername());
         }
         return $user;
     }
